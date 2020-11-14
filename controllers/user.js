@@ -1,7 +1,7 @@
 const bcrypt = require ('bcrypt')
 const jwt = require('jsonwebtoken');
 
-const user = require ('../models/User')
+const User = require ('../models/User')
 
 
 exports.signup = (req, res, next) => {
@@ -45,3 +45,15 @@ exports.login = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }));
 };
+
+/*exports.allUsers = (req, res, next) => {
+  User.find()
+  .then(users => res.status(200).json(users))
+  .catch(error => res.status(400).json({ error }));
+};
+
+exports.deleteOneUser = (req, res, next) => {
+  User.deleteOne({ _id: req.params.id})
+  .then(() => res.status(200).json({ message: 'Utilisateur supprimé'}))
+  .catch(error => res.status(400).json({ error }));
+};*/
