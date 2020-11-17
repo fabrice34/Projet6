@@ -13,14 +13,19 @@ var fs = require('fs');
 
 exports.createThing = function (req, res, next) {
   var thingObject = JSON.parse(req.body.thing);
-  delete thingObject._id;
-  var thing = new Thing(_objectSpread({}, thingObject, {
-    imageUrl: "".concat(req.protocol, "://").concat(req.get('host'), "/images/").concat(req.file.filename),
+  var thing = new Thing({
+    userId: thingObject.userId,
+    name: thingObject.name,
+    manufacturer: thingObject.manufacturer,
+    description: thingObject.description,
+    mainPepper: thingObject.mainPepper,
+    imageUrl: url + "/images/" + req.file.filename,
+    heat: thingObject.heat,
     likes: 0,
     dislikes: 0,
     usersLiked: [],
     usersDisliked: []
-  }));
+  });
   thing.save().then(function () {
     return res.status(201).json({
       message: 'Objet enregistré !'

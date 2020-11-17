@@ -4,16 +4,22 @@ const fs = require('fs');
 
 exports.createThing = (req, res, next) => {
 
-  const thingObject = JSON.parse(req.body.thing);
-  delete thingObject._id;
+ 
+  const thingObject = JSON.parse(req.body.thing)
   const thing = new Thing({
-    ...thingObject,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+    userId: thingObject.userId,
+    name: thingObject.name,
+    manufacturer: thingObject.manufacturer,
+    description: thingObject.description,
+    mainPepper: thingObject.mainPepper,
+    imageUrl: url + "/images/" + req.file.filename,
+    heat: thingObject.heat,
     likes: 0,
     dislikes: 0,
     usersLiked: [],
-    usersDisliked: []
-  });
+    usersDisliked: [],
+});
+
   thing.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
     .catch(error => res.status(400).json({ error }));
