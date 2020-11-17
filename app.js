@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const stuffRoutes = require('./routes/stuff');
+const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://user_34:projet_6@cluster0.5vj6g.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://user_34:projet_6@cluster0.5vj6g.mongodb.net/SoPeckoko?retryWrites=true&w=majority',
   { useNewUrlParser: true,             /*logique pour se connecter à mongodb*/
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -24,6 +24,6 @@ app.use(bodyParser.json());   /*Requêtes exploitables*/
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use('/api/stuff', stuffRoutes);   /* les routes  */
+app.use('/api/sauces', saucesRoutes);   /* les routes  */
 app.use('/api/auth', userRoutes);
 module.exports = app;
