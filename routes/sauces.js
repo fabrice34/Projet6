@@ -14,4 +14,5 @@
  router.get('/:id', auth, saucesCtrl.getOneThing); /* route qui traite la récupération d'un Thing spécifique*/
  router.get('/', auth, saucesCtrl.getAllThings);/*route traitera la récupération de la liste de Things en vente*/
  
+ 
  module.exports = router;
