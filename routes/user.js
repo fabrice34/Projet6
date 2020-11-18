@@ -8,4 +8,3 @@ router.post('/login', userCtrl.login);
 
 module.exports = router;
 
-// utilisation auth pour user ?

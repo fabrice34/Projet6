@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');                     /*création schema de données*/
 
 const sauceSchema = mongoose.Schema({
     userId: { type: String, required: true },

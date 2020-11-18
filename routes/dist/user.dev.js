@@ -8,4 +8,4 @@ var userCtrl = require('../controllers/user');
 
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
-module.exports = router; // utilisation auth pour user ?
+module.exports = router;

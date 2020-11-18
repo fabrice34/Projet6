@@ -5,11 +5,11 @@ const MIME_TYPES = {
     'image/jpeg': 'jpg',
     'image/png': 'png'
 };
-// autres formats ?
+
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, 'images') // pourquoi pas ../images ?
+        callback(null, 'images') 
     },
     filename: (req, file, callback) => {
         const name = file.originalname.split(' ').join('_');

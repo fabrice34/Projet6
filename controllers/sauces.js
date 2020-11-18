@@ -1,11 +1,12 @@
+/*stock toute la logique métier de notre application*/
 const Sauce = require('../models/Sauce');
-const fs = require('fs');
+const fs = require('fs');  /*package filesystem de node. Pour avoir accès aux différentes opérations liées aux fichiers*/
 
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
   const sauce = new Sauce({
-      // utilisation de l'opérateur spread ... qui copie tous les éléments de req.body
+      /*utilisation de l'opérateur spread ... qui copie tous les éléments de req.body*/
     ...sauceObject,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     likes: 0,
