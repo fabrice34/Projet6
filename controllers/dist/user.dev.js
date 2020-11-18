@@ -14,7 +14,7 @@ exports.signup = function (req, res, next) {
     });
     user.save().then(function () {
       return res.status(201).json({
-        message: 'Utilisateur créé !'
+        message: 'Utilisateur créé'
       });
     })["catch"](function (error) {
       return res.status(400).json({
@@ -34,19 +34,19 @@ exports.login = function (req, res, next) {
   }).then(function (user) {
     if (!user) {
       return res.status(401).json({
-        error: 'Utilisateur non trouvé !'
+        error: 'Utilisateur non trouvé'
       });
     }
 
     bcrypt.compare(req.body.password, user.password).then(function (valid) {
       if (!valid) {
         return res.status(401).json({
-          error: 'Mot de passe incorrect !'
+          error: 'Mot de passe incorrect'
         });
       }
 
       res.status(200).json({
-        userId: user._id,
+        userId: user.id,
         token: jwt.sign({
           userId: user._id
         }, 'RANDOM_TOKEN_SECRET', {
@@ -60,30 +60,6 @@ exports.login = function (req, res, next) {
     });
   })["catch"](function (error) {
     return res.status(500).json({
-      error: error
-    });
-  });
-};
-
-exports.allUsers = function (req, res, next) {
-  User.find().then(function (users) {
-    return res.status(200).json(users);
-  })["catch"](function (error) {
-    return res.status(400).json({
-      error: error
-    });
-  });
-};
-
-exports.deleteOneUser = function (req, res, next) {
-  User.deleteOne({
-    _id: req.params.id
-  }).then(function () {
-    return res.status(200).json({
-      message: 'Utilisateur supprimé'
-    });
-  })["catch"](function (error) {
-    return res.status(400).json({
       error: error
     });
   });
