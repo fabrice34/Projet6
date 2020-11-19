@@ -7,6 +7,9 @@ var MIME_TYPES = {
   'image/jpeg': 'jpg',
   'image/png': 'png'
 };
+/* multer permet d'implémenter des téléchargements de fichiers pour que 
+les utilisateurs puissent télécharger des images d'articles à vendre*/
+
 var storage = multer.diskStorage({
   destination: function destination(req, file, callback) {
     callback(null, 'images');

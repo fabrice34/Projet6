@@ -6,6 +6,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
+/* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/
+
 
 var path = require('path');
 
@@ -39,5 +41,7 @@ app.use('/images', express["static"](path.join(__dirname, 'images')));
 /*permet de recuperer des images du local*/
 
 app.use('/api/sauces', saucesRoutes);
+/*Import des routes*/
+
 app.use('/api/auth', userRoutes);
 module.exports = app;

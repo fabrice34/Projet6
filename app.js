@@ -1,7 +1,7 @@
 // déclaration de la constante express et utilisation de la commande require pour importer express
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');  /* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/
 const path = require('path');
 
 const saucesRoutes = require('./routes/sauces');
@@ -28,7 +28,7 @@ app.use(bodyParser.json());  /*Requêtes exploitables (Transformer le corps de l
 
 app.use('/images', express.static(path.join(__dirname, 'images')));  /*permet de recuperer des images du local*/
 
-app.use('/api/sauces', saucesRoutes);
+app.use('/api/sauces', saucesRoutes); /*Import des routes*/
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
