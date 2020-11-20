@@ -11,9 +11,9 @@ require('dotenv').config() /*Données DB Mongo cachées*/
 
 mongoose.set('useCreateIndex', true);
 
-mongoose.connect(process.env.MONGODB_CONNECT,
+mongoose.connect(process.env.MONGODB_CONNECT,/*logique pour se connecter à mongodb*/
   { 
-    useNewUrlParser: true,             /*logique pour se connecter à mongodb*/
+    useNewUrlParser: true,             
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));

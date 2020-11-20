@@ -26,10 +26,10 @@ require('dotenv').config();
 
 
 mongoose.set('useCreateIndex', true);
-mongoose.connect(process.env.MONGODB_CONNECT, {
+mongoose.connect(process.env.MONGODB_CONNECT,
+/*logique pour se connecter à mongodb*/
+{
   useNewUrlParser: true,
-
-  /*logique pour se connecter à mongodb*/
   useUnifiedTopology: true
 }).then(function () {
   return console.log('Connexion à MongoDB réussie !');
