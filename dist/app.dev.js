@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 /*Requêtes exploitables (Transformer le corps de la requête en objet javascript utilisable grâce à la méthode json() de bodyParser)*/
 
 app.use('/images', express["static"](path.join(__dirname, 'images')));
-/*permet de recuperer des images du local*/
+/* Gestion de la ressource image de façon statique*/
 
 app.use('/api/sauces', saucesRoutes);
 /*route de l'API*/
