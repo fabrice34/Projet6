@@ -4,6 +4,8 @@ Note: Ce Repository ne contient que la partie backend du projet.
 
 Pour la partie backend :
     Cloner le back-end -> https://github.com/fabrice34/Projet6
+    
+    
     Renommer le fichier .env.exemple en .env et renseigner la clé de connexion avec celle fournie dans le livrable
     Lancer le serveur => node server
 
