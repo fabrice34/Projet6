@@ -10,9 +10,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var Sauce = require('../models/Sauce');
 
 var fs = require('fs');
-/*package filesystem de node. Pour avoir accès aux différentes opérations liées aux fichiers*/
-//Fonction d'ajout d'une nouvelle sauce (requête POST)  
-//la logique de notre route POST en tant que fonction appelée createSauce()
+/*package filesystem de node. Pour avoir accès aux différentes opérations
+    liées aux fichiers*/
+
+/*Fonction d'ajout d'une nouvelle sauce (requête POST)  
+la logique de notre route POST en tant que fonction appelée createSauce()*/
 
 
 exports.createSauce = function (req, res, next) {

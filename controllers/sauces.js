@@ -1,9 +1,10 @@
 /*stock toute la logique métier de notre application*/
 const Sauce = require('../models/Sauce');
-const fs = require('fs');  /*package filesystem de node. Pour avoir accès aux différentes opérations liées aux fichiers*/
+const fs = require('fs');  /*package filesystem de node. Pour avoir accès aux différentes opérations
+                               liées aux fichiers*/
 
-//Fonction d'ajout d'une nouvelle sauce (requête POST)  
-//la logique de notre route POST en tant que fonction appelée createSauce()
+/*Fonction d'ajout d'une nouvelle sauce (requête POST)  
+la logique de notre route POST en tant que fonction appelée createSauce()*/
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
