@@ -1,6 +1,6 @@
 "use strict";
 
-// déclaration de la constante express et utilisation de la commande require pour importer express
+/* déclaration de la constante express et utilisation de la commande require pour importer express*/
 var express = require('express');
 
 var bodyParser = require('body-parser');
@@ -11,7 +11,12 @@ var mongoose = require('mongoose');
 
 var path = require('path');
 
+var helmet = require("helmet"); // plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...
+
+
 var saucesRoutes = require('./routes/sauces');
+/*Import des routes*/
+
 
 var userRoutes = require('./routes/user');
 
@@ -27,6 +32,9 @@ mongoose.connect('mongodb+srv://user_34:projet_6@cluster0.5vj6g.mongodb.net/SoPe
   return console.log('Connexion à MongoDB échouée !');
 });
 var app = express();
+app.use(helmet());
+/* Exécution du plugin de sécurité*/
+
 app.use(function (req, res, next) {
   /* Système de sécurité CORS : Cross Origin Resource Sharing */
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -41,7 +49,7 @@ app.use('/images', express["static"](path.join(__dirname, 'images')));
 /*permet de recuperer des images du local*/
 
 app.use('/api/sauces', saucesRoutes);
-/*Import des routes*/
+/*route de l'API*/
 
 app.use('/api/auth', userRoutes);
 module.exports = app;

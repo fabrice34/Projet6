@@ -2,7 +2,8 @@
 const Sauce = require('../models/Sauce');
 const fs = require('fs');  /*package filesystem de node. Pour avoir accès aux différentes opérations liées aux fichiers*/
 
-//Fonction d'ajout d'une nouvelle sauce (requête POST
+//Fonction d'ajout d'une nouvelle sauce (requête POST)  
+//la logique de notre route POST en tant que fonction appelée createSauce()
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
@@ -47,7 +48,7 @@ exports.deleteSauce = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-//Fonction d'envoi au front de l'objet sauce demandé (requête GET)
+//Fonction d'envoi au front de l'objet sauce demandé (requête GET) avec la méthode find qui va nous retounéun tableau contenant la sauce sêcifique
 exports.findOneSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then(sauce => res.status(200).json(sauce))

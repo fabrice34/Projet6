@@ -1,10 +1,10 @@
-// déclaration de la constante express et utilisation de la commande require pour importer express
+/* déclaration de la constante express et utilisation de la commande require pour importer express*/
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');  /* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/
 const path = require('path');
-
-const saucesRoutes = require('./routes/sauces');
+const helmet = require("helmet"); // plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...
+const saucesRoutes = require('./routes/sauces');/*Import des routes*/
 const userRoutes = require('./routes/user');
 
 mongoose.set('useCreateIndex', true);
@@ -15,7 +15,10 @@ mongoose.connect('mongodb+srv://user_34:projet_6@cluster0.5vj6g.mongodb.net/SoPe
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+
 const app = express();
+
+app.use(helmet()); /* Exécution du plugin de sécurité*/
 
 app.use((req, res, next) => {            /* Système de sécurité CORS : Cross Origin Resource Sharing */
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,7 +31,7 @@ app.use(bodyParser.json());  /*Requêtes exploitables (Transformer le corps de l
 
 app.use('/images', express.static(path.join(__dirname, 'images')));  /*permet de recuperer des images du local*/
 
-app.use('/api/sauces', saucesRoutes); /*Import des routes*/
+app.use('/api/sauces', saucesRoutes); /*route de l'API*/
 app.use('/api/auth', userRoutes);
 
 module.exports = app;

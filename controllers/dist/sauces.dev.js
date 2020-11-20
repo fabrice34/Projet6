@@ -11,7 +11,8 @@ var Sauce = require('../models/Sauce');
 
 var fs = require('fs');
 /*package filesystem de node. Pour avoir accès aux différentes opérations liées aux fichiers*/
-//Fonction d'ajout d'une nouvelle sauce (requête POST
+//Fonction d'ajout d'une nouvelle sauce (requête POST)  
+//la logique de notre route POST en tant que fonction appelée createSauce()
 
 
 exports.createSauce = function (req, res, next) {
@@ -79,7 +80,7 @@ exports.deleteSauce = function (req, res, next) {
       error: error
     });
   });
-}; //Fonction d'envoi au front de l'objet sauce demandé (requête GET)
+}; //Fonction d'envoi au front de l'objet sauce demandé (requête GET) avec la méthode find qui va nous retounéun tableau contenant la sauce sêcifique
 
 
 exports.findOneSauce = function (req, res, next) {
