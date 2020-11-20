@@ -3,14 +3,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');  /* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/
 const path = require('path');
-const helmet = require("helmet"); // plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...
+const helmet = require("helmet"); /* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...*/
 const saucesRoutes = require('./routes/sauces');/*Import des routes*/
 const userRoutes = require('./routes/user');
 
+require('dotenv').config() /*Données DB Mongo cachées*/
+
 mongoose.set('useCreateIndex', true);
 
-mongoose.connect('mongodb+srv://user_34:projet_6@cluster0.5vj6g.mongodb.net/SoPeckoko?retryWrites=true&w=majority',
-  { useNewUrlParser: true,             /*logique pour se connecter à mongodb*/
+mongoose.connect(process.env.MONGODB_CONNECT,
+  { 
+    useNewUrlParser: true,             /*logique pour se connecter à mongodb*/
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));

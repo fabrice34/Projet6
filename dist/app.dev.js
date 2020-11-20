@@ -11,7 +11,8 @@ var mongoose = require('mongoose');
 
 var path = require('path');
 
-var helmet = require("helmet"); // plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...
+var helmet = require("helmet");
+/* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...*/
 
 
 var saucesRoutes = require('./routes/sauces');
@@ -20,8 +21,12 @@ var saucesRoutes = require('./routes/sauces');
 
 var userRoutes = require('./routes/user');
 
+require('dotenv').config();
+/*Données DB Mongo cachées*/
+
+
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://user_34:projet_6@cluster0.5vj6g.mongodb.net/SoPeckoko?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_CONNECT, {
   useNewUrlParser: true,
 
   /*logique pour se connecter à mongodb*/
