@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');  /* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/
 const path = require('path');
-const helmet = require("helmet"); /* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...*/
+const helmet = require("helmet"); /* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS...*/
 const saucesRoutes = require('./routes/sauces');/*Import des routes*/
 const userRoutes = require('./routes/user');
 
@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_CONNECT,/*logique pour se connecter à mong
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-const app = express();
+const app = express(); // permet de créer une application express 
 
 app.use(helmet()); /* Exécution du plugin de sécurité*/
 

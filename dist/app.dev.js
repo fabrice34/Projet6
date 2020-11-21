@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 
 var helmet = require("helmet");
-/* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS, détection du MIME TYPE...*/
+/* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS...*/
 
 
 var saucesRoutes = require('./routes/sauces');
@@ -36,7 +36,8 @@ mongoose.connect(process.env.MONGODB_CONNECT,
 })["catch"](function () {
   return console.log('Connexion à MongoDB échouée !');
 });
-var app = express();
+var app = express(); // permet de créer une application express 
+
 app.use(helmet());
 /* Exécution du plugin de sécurité*/
 
