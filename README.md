@@ -1,5 +1,9 @@
 Projet 6 formation développeur web - So Pekocko
 
+
+Application web dans laquelle des utilisateurs 
+pourront ajouter leurs sauces piquantes préférées 
+et liker ou disliker les sauces proposées par les autres utilisateurs.
 Note: Ce Repository ne contient que la partie backend du projet.
 
 

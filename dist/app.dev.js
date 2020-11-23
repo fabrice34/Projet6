@@ -3,7 +3,8 @@
 /* déclaration de la constante express et utilisation de la commande require pour importer express*/
 var express = require('express');
 
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser'); //Rend les données du corps de la requête exploitable
+
 
 var mongoose = require('mongoose');
 /* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/

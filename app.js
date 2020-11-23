@@ -1,6 +1,6 @@
 /* déclaration de la constante express et utilisation de la commande require pour importer express*/
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); //Rend les données du corps de la requête exploitable
 const mongoose = require('mongoose');  /* Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.*/
 const path = require('path');
 const helmet = require("helmet"); /* plugin de sécurité pour les requêtes HTTP, les headers, protection XSS...*/
