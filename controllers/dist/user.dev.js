@@ -75,6 +75,6 @@ exports.limiter = rateLimit({
   // pour bloquer la connexion aprés trop de tentative de connexion     
   windowMs: 15 * 60 * 1000,
   // 15 minutes
-  max: 2 // limit each IP to 100 requests per windowMs
+  max: 2 // limiter chaque IP à 2 demandes par fenêtreMs
 
 });
