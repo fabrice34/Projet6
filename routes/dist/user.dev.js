@@ -7,5 +7,5 @@ var router = express.Router();
 var userCtrl = require('../controllers/user');
 
 router.post('/signup', userCtrl.signup);
-router.post('/login', userCtrl.login);
+router.post('/login', userCtrl.limiter, userCtrl.login);
 module.exports = router;

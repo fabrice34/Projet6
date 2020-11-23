@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const rateLimit = require("express-rate-limit");
 const User = require('../models/User');
+
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)//Algoryhtme de hashage du mot de passe
@@ -41,5 +43,9 @@ exports.login = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+exports.limiter = rateLimit({  // pour bloquer la connexion aprés trop de tentative de connexion     
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 2 // limit each IP to 100 requests per windowMs
+  });
 
 
