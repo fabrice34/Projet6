@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 /*création schema de données :utilisé Mongoose pour créer un modèle de données
-afin de faciliter les opérations de la base de données */
+ afin de faciliter les opérations de la base de données */
 
 
 var sauceSchema = mongoose.Schema({
@@ -43,11 +43,11 @@ var sauceSchema = mongoose.Schema({
     required: true
   },
   usersLiked: {
-    type: Object,
+    type: Array,
     required: true
   },
   usersDisliked: {
-    type: Object,
+    type: Array,
     required: true
   }
 });

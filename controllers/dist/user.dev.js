@@ -1,17 +1,24 @@
 "use strict";
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt'); // protection du mot de passe utilisateur
 
-var jwt = require('jsonwebtoken');
+
+var jwt = require('jsonwebtoken'); // token de protection
+
 
 var rateLimit = require("express-rate-limit");
 
 var User = require('../models/User');
+/* au niveau du middleware signup on utilisera bcrypt qui va nous permettre de hacher
+ (augmente ne niveau de protection),de proteger le mdp lors de l'inscription sur le site de l'utilisation,
+ on creer l'user et on le sauvegarde */
+
 
 exports.signup = function (req, res, next) {
-  bcrypt.hash(req.body.password, 10) //Algoryhtme de hashage du mot de passe
+  bcrypt.hash(req.body.password, 10) //Algoryhtme de hashage du mot de passe(on hash le mdp et on le sale 10fois )
   .then(function (hash) {
     var user = new User({
+      //creer le nouveau user
       email: req.body.email,
       password: hash //Le hash est sauvegardé dans la base et non le mot de passe en clair
 
@@ -31,6 +38,13 @@ exports.signup = function (req, res, next) {
     });
   });
 };
+/* au niveau du middleware login on vient chercher par rapport à l'adresse email:
+avec la fonction user.findone() dans le cas ou il n'a pas d'utilisateur enregistré 
+avec celui la => "utilisateur non trouvé"
+mais s'il est bon, bcrypte va compararer les 2 mdp et que si la comparaison des hashs sont valide 
+alors on nous retournerra un user.id et un token ( on retrouvera se token sur la protection des routes)
+ */
+
 
 exports.login = function (req, res, next) {
   User.findOne({

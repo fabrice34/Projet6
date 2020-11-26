@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');  /*création schema de données :utilisé Mongoose pour créer un modèle de données
+const mongoose = require('mongoose'); /*création schema de données :utilisé Mongoose pour créer un modèle de données
                                        afin de faciliter les opérations de la base de données */
 
 
@@ -12,8 +12,8 @@ const sauceSchema = mongoose.Schema({
     heat: { type: Number, required: true },
     likes: { type: Number, required: true },
     dislikes: { type: Number, required: true },
-    usersLiked: { type: Object, required: true },
-    usersDisliked: { type: Object, required: true }
+    usersLiked: { type: Array, required: true },
+    usersDisliked: { type: Array, required: true }
 });
 
 module.exports = mongoose.model('Sauce', sauceSchema);

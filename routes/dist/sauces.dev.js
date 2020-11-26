@@ -11,7 +11,7 @@ var auth = require('../middleware/auth');
 
 var multer = require('../middleware/multer-config');
 /* multer permet d'implémenter des téléchargements de fichiers pour que 
- les utilisateurs puissent télécharger des images d'articles à vendre*/
+ les utilisateurs puissent télécharger des images d'articles */
 
 
 router.post('/', auth, multer, saucesCtrl.createSauce);

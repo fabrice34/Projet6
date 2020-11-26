@@ -6,7 +6,7 @@ const saucesCtrl = require('../controllers/sauces');
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 /* multer permet d'implémenter des téléchargements de fichiers pour que 
- les utilisateurs puissent télécharger des images d'articles à vendre*/
+ les utilisateurs puissent télécharger des images d'articles */
 
 
 router.post('/', auth, multer, saucesCtrl.createSauce);/*route qui traitera l'enregistrements de sauce (schema de donnée) dans la base de donnée*/
